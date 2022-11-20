@@ -641,6 +641,12 @@ public class FactionsPlayerListener implements Listener {
         Player player = event.getPlayer();
 
         if (block == null) return;
+        Faction faction = Board.getInstance().getFactionAt(block.getLocation());
+        
+        if(!faction.doesLocationHaveOwnersSet(loc)) {
+        event.setCancelled(true);
+            return;
+        }
 
 
         Material type;
